@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 16:09:03 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/04 21:06:40 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/05 01:12:15 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int		init_mande(t_img *img)
 	img->x2 = 1.5 / img->zoom + img->offset_x;
 	img->y1 = -1.5 / img->zoom + img->offset_y;
 	img->y2 = 1.5 / img->zoom + img->offset_y;
-	img->zoom_x = WIN_WIDTH / (img->x2 - img->x1);
-	img->zoom_y = WIN_HEIGH / (img->y2 - img->y1);
 	return (1);
 }
 
@@ -53,18 +51,16 @@ void	iteration(t_img *img, int x, int y, int i)
 
 int		draw_mande(t_img *img)
 {
-	int		img_x;
-	int		img_y;
 	int		x;
 	int		y;
 
-	img_x = (img->x2 - img->x1) * img->zoom_x;
-	img_y = (img->y2 - img->y1) * img->zoom_y;
+	img->zoom_x = WIN_WIDTH / (img->x2 - img->x1);
+	img->zoom_y = WIN_HEIGH / (img->y2 - img->y1);
 	x = -1;
-	while (++x < img_x)
+	while (++x < WIN_WIDTH)
 	{
 		y = -1;
-		while (++y < img_y)
+		while (++y < WIN_HEIGH)
 			iteration(img, x, y, 0);
 	}
 	return (1);

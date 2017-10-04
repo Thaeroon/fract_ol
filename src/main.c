@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:50:43 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/04 21:37:50 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/05 01:13:08 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,11 @@ int		mouse_pressed(int key, int x, int y, void *parram)
 {
 	ft_printf("key = %i, x=%i, y=%i\n", key, x, y);
 	if (key == 4)
-		((t_img *)parram)->zoom *= 1.1;
+		((t_img *)parram)->zoom +=0.1;
 	if (key == 5)
-		((t_img *)parram)->zoom /= 1.1;
+		((t_img *)parram)->zoom -=0.1;
 	if (key == 4 || key == 5)
-	{
-		((t_img *)parram)->offset_x = (x / (double)WIN_WIDTH / 2) - 0.5;
-		((t_img *)parram)->offset_y = (y / (double)WIN_HEIGH / 2) - 0.5;
-		printf("offset x = %f\noffset y = %f", ((t_img *)parram)->offset_x, ((t_img *)parram)->offset_y);
 		draw(parram);
-	}
 	return (0);
 }
 
