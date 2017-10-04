@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/24 20:18:29 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/04 14:09:16 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/04 19:20:23 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ void	put_pixel(t_img *img, int x, int y, int c)
 
 int		draw(t_img *img)
 {
+	ft_bzero(img->buffer, WIN_WIDTH * WIN_HEIGH * (img->bpp >> 3));
+	if (img->fract == MANDE)
+		init_mande(img) && draw_mande(img);
+	else if (img->fract == JULIA)
+		draw_julia(img);
 	mlx_put_image_to_window(img->mlx, img->win, img->ptr, 0, 0);
 	return (0);
 }
