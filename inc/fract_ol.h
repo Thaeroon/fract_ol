@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 06:24:52 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/05 01:12:31 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/05 15:33:12 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,17 @@
 
 # define WIN_WIDTH 600
 # define WIN_HEIGH 450
+# define WHITE 0x00ffffff
 # define MANDE 1
 # define JULIA 2
+# define SHIP 3
+# define TREE 4
 
-typedef struct	s_fract
+typedef struct	s_point
 {
 	int		x;
 	int		y;
-	int		z;
-	int		color;
-}				t_fract;
+}				t_point;
 
 typedef struct	s_img
 {
@@ -54,14 +55,23 @@ typedef struct	s_img
 	double		x2;
 	double		y1;
 	double		y2;
+	double		r;
+	double		i;
+	double		c_r;
+	double		c_i;
 	int			it_max;
+	int			mouse_state;
 }				t_img;
 
 int				get_input(char const *argv[], int argc);
 int				draw(t_img *img);
 int				init_mande(t_img *img);
 int				draw_mande(t_img *img);
+int				init_julia(t_img *img);
 int				draw_julia(t_img *img);
+int				init_ship(t_img *img);
+int				draw_ship(t_img *img);
+int				draw_tree(t_img *img);
 void			put_pixel(t_img *img, int x, int y, int c);
 
 #endif

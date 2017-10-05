@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 06:24:27 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/04 16:44:11 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/05 15:23:32 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		tooltip(const char *name)
 {
 	ft_printf("Usage : %s <fractale name>\n", name);
-	ft_printf("fractales disponible : mandelbrot, julia\n");
+	ft_printf("fractales disponible : mandelbrot, julia, ship, tree\n");
 	return (0);
 }
 
@@ -27,5 +27,9 @@ int		get_input(char const *argv[], int argc)
 		return (MANDE);
 	if (ft_strcmp(argv[1], "julia") == 0)
 		return (JULIA);
+	if (ft_strcmp(argv[1], "tree") == 0)
+		return (TREE);
+	if (ft_strcmp(argv[1], "ship") == 0)
+		return (SHIP);
 	return(tooltip(argv[0]));
 }

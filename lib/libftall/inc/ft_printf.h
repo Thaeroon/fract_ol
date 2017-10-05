@@ -6,7 +6,7 @@
 /*   By: nicolas <nicolas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 12:40:04 by nicolas           #+#    #+#             */
-/*   Updated: 2017/08/22 07:03:19 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/05 13:43:40 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int				copy_arg(char **ret, int ret_len, char *arg, int arg_len);
 void			put_arg(t_modif *modif, char **ret_str,
 						int	*ret_len, va_list ap);
 const char		*get_info(const char *str, t_modif *modif, va_list ap);
-int				ft_printf(const char *format, ...);
 int				copy_until_mod(const char **str, char **ret, int ret_len);
 char			*ft_strcpy(char *dest, const char *src);
 
@@ -70,8 +69,8 @@ char			*conv_big_c(t_modif *modif, va_list arg, int *arg_len);
 char			*conv_big_s(t_modif *modif, va_list arg, int *arg_len);
 char			*conv_mod(t_modif *modif, va_list arg, int *arg_len);
 int				ft_strcmp(const char *s1, const char *s2);
+int				ft_printf(const char *format, ...);
+char			*ft_sprintf(const char *format, ...);
 
-void			disp_info(t_modif *modif);
-void			affichebin(uintmax_t n);
 
 #endif

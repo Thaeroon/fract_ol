@@ -6,7 +6,7 @@
 #    By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 16:48:28 by nmuller           #+#    #+#              #
-#    Updated: 2017/09/21 16:06:32 by nmuller          ###   ########.fr        #
+#    Updated: 2017/10/05 13:42:00 by nmuller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC_FILES =	get_next_line.c \
 			conv_misc.c \
 			display.c \
 			ft_printf.c \
+			ft_sprintf.c \
 			parsing.c \
 			conv_number.c \
 			ft_itoa_base_spec.c \

@@ -6,7 +6,7 @@
 #    By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 16:48:28 by nmuller           #+#    #+#              #
-#    Updated: 2017/10/04 16:11:51 by nmuller          ###   ########.fr        #
+#    Updated: 2017/10/05 15:26:20 by nmuller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LKFLAGS =  -Llib/minilibx_x11 -lmlx -lXext -lX11 -Llib/libftall -lftall -lm
 LIB = $(LIB_PATH)/libftall/libftall.a $(LIB_PATH)/minilibx_x11/libmlx.a
 
 # files
-SRC_FILES =	main.c display.c input.c mandelbrot.c julia.c
+SRC_FILES =	main.c display.c input.c mandelbrot.c julia.c ship.c tree.c
 
 # executable name
 NAME = fract_ol

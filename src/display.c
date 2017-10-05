@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/24 20:18:29 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/04 19:20:23 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/05 15:32:50 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,22 @@ int		draw(t_img *img)
 	if (img->fract == MANDE)
 		init_mande(img) && draw_mande(img);
 	else if (img->fract == JULIA)
-		draw_julia(img);
+		init_julia(img) && draw_julia(img);
+	if (img->fract == SHIP)
+		init_ship(img) && draw_ship(img);
+	else if (img->fract == TREE)
+		draw_tree(img);
 	mlx_put_image_to_window(img->mlx, img->win, img->ptr, 0, 0);
+	if (img->mouse_state == 1)
+		mlx_string_put(img->mlx, img->win, 0, 10, WHITE, "cursor = zoom");
+	else if (img->mouse_state == 2)
+		mlx_string_put(img->mlx, img->win, 0, 10, WHITE, "cursor = ensemble");
+	else if (img->mouse_state == 0)
+		mlx_string_put(img->mlx, img->win, 0, 10, WHITE, "cursor = nothing");
+	mlx_string_put(img->mlx, img->win, 0, 20, WHITE, ft_sprintf(
+		"zoom = %i, precision = %i", (int)(img->zoom * 1000), img->it_max));
+	if (img->fract == JULIA)
+		mlx_string_put(img->mlx, img->win, 0, 30, WHITE, ft_sprintf(
+"ensemble : r = %i, i = %i", (int)(img->c_r * 1000), (int)(img->c_i * 1000)));
 	return (0);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_sprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicolas <nicolas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 12:40:10 by nicolas           #+#    #+#             */
-/*   Updated: 2017/10/05 13:46:33 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/05 13:46:13 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	init_modif(t_modif **modif)
+static int		init_modif(t_modif **modif)
 {
 	(*modif)->att = 0;
 	(*modif)->champ = -2;
@@ -22,7 +22,7 @@ static int	init_modif(t_modif **modif)
 	return (1);
 }
 
-int		ft_printf(const char *format, ...)
+char	*ft_sprintf(const char *format, ...)
 {
 	va_list		ap;
 	t_modif		*modif;
@@ -30,7 +30,7 @@ int		ft_printf(const char *format, ...)
 	char		*ret_str;
 
 	if (!format)
-		return (-1);
+		exit (-1);
 	ret_str = NULL;
 	nb_wrote = 0;
 	va_start(ap, format);
@@ -46,7 +46,5 @@ int		ft_printf(const char *format, ...)
 	}
 	free(modif);
 	va_end(ap);
-	(ret_str) ? write(1, ret_str, nb_wrote) : 0;
-	free(ret_str);
-	return (nb_wrote);
+	return (ret_str);
 }
