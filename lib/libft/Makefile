@@ -50,7 +50,7 @@ SRC_FILES =	get_next_line.c \
 			ft_xtoi.c
 
 # executable name
-NAME = libftall.a
+NAME = libft.a
 
 ##############
 # PROCESSING #

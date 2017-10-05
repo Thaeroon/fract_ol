@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:50:43 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/05 15:12:08 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/05 16:35:20 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int		key_pressed(int key, void *parram)
 	if ((65361 <= key && key <= 65364) || 65453 == key || key == 65451
 							|| key == 97 || key == 122 || key == 101)
 		draw(parram);
-		ft_printf("%i\n",key);
 	return (0);
 }
 
@@ -79,7 +78,6 @@ int		mouse_pressed(int key, int x, int y, void *parram)
 			img->r = (x * (img->x2 - img->x1)) / WIN_WIDTH + img->x1;
 			img->i = (y * (img->y2 - img->y1)) / WIN_HEIGH + img->y1;
 		}
-		printf("key = %i, x=%i r=%f, y=%i i=%f\n", key, x, img->r, y, img->i);
 		draw(parram);
 	}
 	return (0);
