@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:50:43 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 14:28:55 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 18:18:25 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ void	init(t_img *img)
 	img->offset_x = 0;
 	img->offset_y = 0;
 	img->zoom = (img->fract == TREE) ? 100 : 1;
-	img->it_max = (img->fract == TREE) ? 1 : 127;
-	img->r = (img->fract == MANDE) ? -0.5 : 0;
+	img->it_max = (img->fract == TREE) ? 1 : 100;
+	img->r = (img->fract == MANDE || img->fract == SHIP) ? -0.5 : 0;
 	img->i = 0;
 	img->mouse_state = 0;
 	img->c_r = -0.25;
 	img->c_i = -0.66;
+	img->color = 127;
 }
 
 int		key_pressed(int key, void *parram)
@@ -30,23 +31,28 @@ int		key_pressed(int key, void *parram)
 	t_img	*img;
 
 	img = (t_img *)parram;
-	if (key == 65307)
+	if (key == 53)
 		exit(0);
-	else if (65361 <= key && key <= 65364)
+	else if (123 <= key && key <= 126)
 		apply_offset(key, parram);
-	else if (key == 65453)
+	else if (key == 40)
 		img->it_max -= 1;
-	else if (key == 65451)
+	else if (key == 34)
 		img->it_max += 1;
-	else if (key == 97)
-		img->mouse_state = 0;
-	else if (key == 122)
-		img->mouse_state = 1;
-	else if (key == 101)
-		img->mouse_state = 2;
-	if ((65361 <= key && key <= 65364) || 65453 == key || key == 65451
-							|| key == 97 || key == 122 || key == 101)
+	else if (key == 31)
+		ft_zoom(img, 1);
+	else if (key == 37)
+		ft_zoom(img, 0);
+	else if (key == 32 && img->color < WHITE)
+		img->color += 1;
+	else if (key == 38 && img->color > 1)
+		img->color -= 1;
+	else if (key == 12)
+		img->mouse_state = (img->mouse_state == 0) ? 1 : 0;
+	if ((123 <= key && key <= 126) || 31 == key || key == 34 || key == 37 ||
+	key == 40 || key == 12 || key == 13 || key == 14 || key == 32 || key == 38)
 		draw(parram);
+	ft_printf("%i\n", key);
 	return (0);
 }
 
@@ -55,17 +61,14 @@ int		mouse_pressed(int key, int x, int y, void *parram)
 	t_img	*img;
 
 	img = (t_img*)parram;
-	if (key == 4)
-		img->zoom *= 1.1;
 	if (key == 5)
-		img->zoom /= 1.1;
+		ft_zoom(img, 1);
+	else if (key == 4)
+		ft_zoom(img, 1);
 	if (key == 4 || key == 5)
 	{
-		if (img->mouse_state == 1)
-		{
-			img->r = (x * (img->x2 - img->x1)) / WIN_WIDTH + img->x1;
-			img->i = (y * (img->y2 - img->y1)) / WIN_HEIGH + img->y1;
-		}
+		img->r = (x * (img->x2 - img->x1)) / WIN_WIDTH + img->x1;
+		img->i = (y * (img->y2 - img->y1)) / WIN_HEIGH + img->y1;
 		draw(parram);
 	}
 	return (0);
@@ -76,7 +79,7 @@ int		mouse_moved(int x, int y, void *parram)
 	t_img	*img;
 
 	img = (t_img *)parram;
-	if (img->mouse_state == 2)
+	if (img->mouse_state == 1)
 	{
 		img->c_r = x * 2.0 / (double)WIN_WIDTH - 1.0;
 		img->c_i = y * 2.0 / (double)WIN_HEIGH - 1.0;

@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 06:24:52 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 14:29:19 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 18:09:06 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "get_next_line.h"
 # include "mlx.h"
 
-# define WIN_WIDTH 600
-# define WIN_HEIGH 450
+# define WIN_WIDTH 800
+# define WIN_HEIGH 800
 # define WHITE 0x00ffffff
 # define MANDE 1
 # define JULIA 2
@@ -61,6 +61,7 @@ typedef struct	s_img
 	double		c_i;
 	int			it_max;
 	int			mouse_state;
+	int			color;
 }				t_img;
 
 int				get_input(char const *argv[], int argc);
@@ -73,7 +74,8 @@ int				init_ship(t_img *img);
 int				draw_ship(t_img *img);
 int				draw_tree(t_img *img);
 void			put_pixel(t_img *img, int x, int y, int c);
-int				set_color(int i, int it_max);
+int				set_color(t_img *img, int i, int it_max);
 void			apply_offset(int key, t_img *img);
+void			ft_zoom(t_img *img, int plus);
 
 #endif

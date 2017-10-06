@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/24 20:18:29 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 14:20:19 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 18:16:35 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,21 @@ int		draw(t_img *img)
 		draw_tree(img);
 	mlx_put_image_to_window(img->mlx, img->win, img->ptr, 0, 0);
 	if (img->mouse_state == 1)
-		mlx_string_put(img->mlx, img->win, 0, 10, WHITE, "cursor = zoom");
-	else if (img->mouse_state == 2)
-		mlx_string_put(img->mlx, img->win, 0, 10, WHITE, "cursor = ensemble");
-	else if (img->mouse_state == 0)
-		mlx_string_put(img->mlx, img->win, 0, 10, WHITE, "cursor = nothing");
-	mlx_string_put(img->mlx, img->win, 0, 20, WHITE, ft_sprintf(
-		"zoom = %i, precision = %i", (int)(img->zoom * 1000), img->it_max));
+		mlx_string_put(img->mlx, img->win, 0, 0, WHITE, "cursor = ensemble");
+	else
+		mlx_string_put(img->mlx, img->win, 0, 0, WHITE, "cursor = zoom");
+	mlx_string_put(img->mlx, img->win, 0, 11, WHITE, ft_sprintf(
+		"zoom = %i, precision = %i, color = %i",
+		(int)(img->zoom * 1000), img->it_max, img->color));
 	if (img->fract == JULIA)
-		mlx_string_put(img->mlx, img->win, 0, 30, WHITE, ft_sprintf(
+		mlx_string_put(img->mlx, img->win, 0, 22, WHITE, ft_sprintf(
 "ensemble : r = %i, i = %i", (int)(img->c_r * 1000), (int)(img->c_i * 1000)));
 	return (0);
 }
 
-int		set_color(int i, int it_max)
+int		set_color(t_img *img, int i, int it_max)
 {
 	if (i < it_max)
-		return (i * 0x00ffffff / it_max);
+		return (i * 0x00ffffff / img->color);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 16:10:02 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 14:21:08 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 18:17:15 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int			init_julia(t_img *img)
 {
-	img->x1 = img->r - 1.5 / img->zoom + img->offset_x;
-	img->x2 = img->r + 1.5 / img->zoom + img->offset_x;
-	img->y1 = img->i - 1.5 / img->zoom + img->offset_y;
-	img->y2 = img->i + 1.5 / img->zoom + img->offset_y;
+	img->x1 = img->r - 2.0 / img->zoom + img->offset_x;
+	img->x2 = img->r + 2.0 / img->zoom + img->offset_x;
+	img->y1 = img->i - 2.0 / img->zoom + img->offset_y;
+	img->y2 = img->i + 2.0 / img->zoom + img->offset_y;
 	return (1);
 }
 
@@ -39,7 +39,7 @@ static void	iteration(t_img *img, int x, int y, int i)
 		z_r = z_r * z_r - z_i * z_i + c_r;
 		z_i = 2 * z_i * tmp + c_i;
 	}
-	put_pixel(img, x, y, set_color(i, img->it_max));
+	put_pixel(img, x, y, set_color(img, i, img->it_max));
 }
 
 int			draw_julia(t_img *img)

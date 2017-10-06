@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 15:22:44 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 14:23:27 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 18:00:37 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	iteration(t_img *img, int x, int y, int i)
 		z_r = z_r * z_r - z_i * z_i + c_r;
 		z_i = 2 * fabs(z_i * tmp) + c_i;
 	}
-	put_pixel(img, x, y, set_color(i, img->it_max));
+	put_pixel(img, x, y, set_color(img, i, img->it_max));
 }
 
 int			draw_ship(t_img *img)
