@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 06:24:27 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 18:01:41 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 18:22:31 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,13 @@ void	apply_offset(int key, t_img *img)
 void	ft_zoom(t_img *img, int plus)
 {
 	if (plus == 1)
+	{
 		img->zoom *= 1.1;
+		img->it_max += img->zoom * 2;
+	}
 	else
+	{
 		img->zoom /= 1.1;
-	img->it_max += img->zoom * 5;
+		img->it_max -= img->zoom * 2;
+	}
 }
