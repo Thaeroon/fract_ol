@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 06:24:27 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/05 15:23:32 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 14:29:09 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,17 @@ int		get_input(char const *argv[], int argc)
 		return (TREE);
 	if (ft_strcmp(argv[1], "ship") == 0)
 		return (SHIP);
-	return(tooltip(argv[0]));
+	return (tooltip(argv[0]));
+}
+
+void	apply_offset(int key, t_img *img)
+{
+	if (key == 65361)
+		img->offset_x -= 0.05 / img->zoom;
+	if (key == 65362)
+		img->offset_y -= 0.05 / img->zoom;
+	if (key == 65363)
+		img->offset_x += 0.05 / img->zoom;
+	if (key == 65364)
+		img->offset_y += 0.05 / img->zoom;
 }

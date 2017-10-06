@@ -6,13 +6,13 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 12:18:26 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/05 15:14:19 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 14:27:33 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
 
-void	draw_line(t_img *img, t_point p0, t_point p1, int err2)
+void		draw_line(t_img *img, t_point p0, t_point p1, int err2)
 {
 	int	dx;
 	int	dy;
@@ -39,8 +39,8 @@ void	draw_line(t_img *img, t_point p0, t_point p1, int err2)
 	}
 }
 
-static void	iteration(t_img *img, t_point a, t_point b, int times){
-
+static void	iteration(t_img *img, t_point a, t_point b, int times)
+{
 	t_point	c;
 	t_point	d;
 	t_point	e;
@@ -50,33 +50,29 @@ static void	iteration(t_img *img, t_point a, t_point b, int times){
 	d.x = a.x - (a.y - b.y);
 	d.y = a.y - (b.x - a.x);
 	e.x = d.x + (b.x - a.x - (a.y - b.y)) / 2;
-	e.y = d.y - (b.x - a.x + a.y - b.y ) / 2;
-
-	if(times > 0)
+	e.y = d.y - (b.x - a.x + a.y - b.y) / 2;
+	if (times > 0)
 	{
 		draw_line(img, a, b, 0);
 		draw_line(img, c, b, 0);
 		draw_line(img, c, d, 0);
 		draw_line(img, a, d, 0);
-
 		iteration(img, d, e, times - 1);
 		iteration(img, e, c, times - 1);
 	}
 }
 
-int		draw_tree(t_img *img)
+int			draw_tree(t_img *img)
 {
-
 	t_point	a;
 	t_point	b;
 	double	side;
 
 	side = 100;
-	a.x = 6*side/2 - side/2;
-	a.y = 4*side;
-	b.x = 6*side/2 + side/2;
-	b.y = 4*side;
-
-	iteration(img, a , b, img->it_max);
+	a.x = 6 * side / 2 - side / 2;
+	a.y = 4 * side;
+	b.x = 6 * side / 2 + side / 2;
+	b.y = 4 * side;
+	iteration(img, a, b, img->it_max);
 	return (1);
 }

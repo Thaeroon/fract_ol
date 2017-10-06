@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/24 20:18:29 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/05 15:32:50 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 14:20:19 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,12 @@ int		draw(t_img *img)
 	if (img->fract == JULIA)
 		mlx_string_put(img->mlx, img->win, 0, 30, WHITE, ft_sprintf(
 "ensemble : r = %i, i = %i", (int)(img->c_r * 1000), (int)(img->c_i * 1000)));
+	return (0);
+}
+
+int		set_color(int i, int it_max)
+{
+	if (i < it_max)
+		return (i * 0x00ffffff / it_max);
 	return (0);
 }

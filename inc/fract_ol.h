@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 06:24:52 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/05 15:33:12 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 14:29:19 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ int				init_ship(t_img *img);
 int				draw_ship(t_img *img);
 int				draw_tree(t_img *img);
 void			put_pixel(t_img *img, int x, int y, int c);
+int				set_color(int i, int it_max);
+void			apply_offset(int key, t_img *img);
 
 #endif

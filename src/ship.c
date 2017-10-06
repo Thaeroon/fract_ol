@@ -6,26 +6,19 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 15:22:44 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/05 16:07:38 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 14:23:27 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
 
-int		init_ship(t_img *img)
+int			init_ship(t_img *img)
 {
 	img->x1 = img->r - 2.0 / img->zoom + img->offset_x;
 	img->x2 = img->r + 2.0 / img->zoom + img->offset_x;
 	img->y1 = img->i - 2.0 / img->zoom + img->offset_y;
 	img->y2 = img->i + 2.0 / img->zoom + img->offset_y;
 	return (1);
-}
-
-static int	set_color(int i,int it_max)
-{
-	if (i < it_max)
-		return (i*0x00ffffff/it_max);
-	return (0);
 }
 
 static void	iteration(t_img *img, int x, int y, int i)
@@ -43,13 +36,13 @@ static void	iteration(t_img *img, int x, int y, int i)
 	while (((z_r * z_r + z_i * z_i) < 4) && (++i < img->it_max))
 	{
 		tmp = z_r;
-		z_r = z_r*z_r - z_i*z_i + c_r;
- 		z_i = 2*fabs(z_i*tmp) + c_i;
+		z_r = z_r * z_r - z_i * z_i + c_r;
+		z_i = 2 * fabs(z_i * tmp) + c_i;
 	}
 	put_pixel(img, x, y, set_color(i, img->it_max));
 }
 
-int		draw_ship(t_img *img)
+int			draw_ship(t_img *img)
 {
 	int		x;
 	int		y;
