@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:50:43 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 18:18:25 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/06 18:23:57 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		mouse_pressed(int key, int x, int y, void *parram)
 	if (key == 5)
 		ft_zoom(img, 1);
 	else if (key == 4)
-		ft_zoom(img, 1);
+		ft_zoom(img, 0);
 	if (key == 4 || key == 5)
 	{
 		img->r = (x * (img->x2 - img->x1)) / WIN_WIDTH + img->x1;
