@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:50:43 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 18:23:57 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/08 13:37:08 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int		key_pressed(int key, void *parram)
 	if ((123 <= key && key <= 126) || 31 == key || key == 34 || key == 37 ||
 	key == 40 || key == 12 || key == 13 || key == 14 || key == 32 || key == 38)
 		draw(parram);
-	ft_printf("%i\n", key);
 	return (0);
 }
 
