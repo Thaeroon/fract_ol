@@ -6,7 +6,7 @@
 #    By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 16:48:28 by nmuller           #+#    #+#              #
-#    Updated: 2017/10/06 14:02:56 by nmuller          ###   ########.fr        #
+#    Updated: 2017/10/09 17:02:23 by nmuller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ LIB = $(LIB_PATH)/libft/libft.a $(LIB_PATH)/minilibx_macos/libmlx.a
 SRC_FILES =	main.c input.c display.c mandelbrot.c julia.c ship.c tree.c
 
 # executable name
-NAME = fract_ol
+NAME = fractol
 
 ##############
 # PROCESSING #

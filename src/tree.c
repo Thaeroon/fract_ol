@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 12:18:26 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 18:14:18 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/08 14:16:37 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ int			draw_tree(t_img *img)
 	t_point	b;
 	double	side;
 
-	side = 100;
-	a.x = 6 * side / 2 - side / 2 + 100;
+	side = 80;
+	a.x = 6 * side / 2 - side / 2 + 60;
 	a.y = 4 * side + 200;
-	b.x = 6 * side / 2 + side / 2 + 100;
+	b.x = 6 * side / 2 + side / 2 + 60;
 	b.y = 4 * side + 200;
 	iteration(img, a, b, img->it_max);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 06:24:27 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 18:22:31 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/09 15:32:06 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ void	ft_zoom(t_img *img, int plus)
 	if (plus == 1)
 	{
 		img->zoom *= 1.1;
-		img->it_max += img->zoom * 2;
+		img->it_max += 1;
 	}
-	else
+	else if (img->zoom > 1.0)
 	{
 		img->zoom /= 1.1;
-		img->it_max -= img->zoom * 2;
+		if (img->it_max > 0)
+			img->it_max -= 1;
 	}
 }

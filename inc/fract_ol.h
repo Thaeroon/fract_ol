@@ -6,14 +6,12 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 06:24:52 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 18:09:06 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/09 15:41:07 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_OL_H
 # define FRACT_OL_H
-
-# include <stdio.h>
 
 # include <math.h>
 # include <stdlib.h>
@@ -22,8 +20,8 @@
 # include "get_next_line.h"
 # include "mlx.h"
 
-# define WIN_WIDTH 800
-# define WIN_HEIGH 800
+# define WIN_WIDTH 600
+# define WIN_HEIGH 600
 # define WHITE 0x00ffffff
 # define MANDE 1
 # define JULIA 2

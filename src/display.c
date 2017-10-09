@@ -6,7 +6,7 @@
 /*   By: nmuller <nmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/24 20:18:29 by nmuller           #+#    #+#             */
-/*   Updated: 2017/10/06 18:16:35 by nmuller          ###   ########.fr       */
+/*   Updated: 2017/10/09 15:48:24 by nmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ void	put_pixel(t_img *img, int x, int y, int c)
 	ptr_color[0] = (c >> 0x00) & 0xFF;
 	ptr_color[1] = (c >> 0x08) & 0xFF;
 	ptr_color[2] = (c >> 0x10) & 0xFF;
-	ptr_color[3] = (c >> 0x18) & 0xFF;
 }
 
 int		draw(t_img *img)
 {
+	char	*tmp;
+
 	ft_bzero(img->buffer, WIN_WIDTH * WIN_HEIGH * (img->bpp >> 3));
 	if (img->fract == MANDE)
 		init_mande(img) && draw_mande(img);
@@ -37,16 +38,17 @@ int		draw(t_img *img)
 	else if (img->fract == TREE)
 		draw_tree(img);
 	mlx_put_image_to_window(img->mlx, img->win, img->ptr, 0, 0);
-	if (img->mouse_state == 1)
-		mlx_string_put(img->mlx, img->win, 0, 0, WHITE, "cursor = ensemble");
-	else
-		mlx_string_put(img->mlx, img->win, 0, 0, WHITE, "cursor = zoom");
-	mlx_string_put(img->mlx, img->win, 0, 11, WHITE, ft_sprintf(
-		"zoom = %i, precision = %i, color = %i",
-		(int)(img->zoom * 1000), img->it_max, img->color));
-	if (img->fract == JULIA)
-		mlx_string_put(img->mlx, img->win, 0, 22, WHITE, ft_sprintf(
-"ensemble : r = %i, i = %i", (int)(img->c_r * 1000), (int)(img->c_i * 1000)));
+	tmp = ft_sprintf("zoom (uj) = %i, precision (ik) = %i, color (ol) = %i",
+		(long int)(img->zoom * 1000), img->it_max, img->color);
+	mlx_string_put(img->mlx, img->win, 0, 0, WHITE, tmp);
+	free(tmp);
+	if (img->mouse_state == 1 && img->fract == JULIA)
+	{
+		tmp = ft_sprintf("ensemble : r = %i, i = %i",
+					(int)(img->c_r * 1000), (int)(img->c_i * 1000));
+		mlx_string_put(img->mlx, img->win, 0, 15, WHITE, tmp);
+		free(tmp);
+	}
 	return (0);
 }
 
